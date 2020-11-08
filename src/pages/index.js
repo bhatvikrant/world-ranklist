@@ -1,11 +1,10 @@
-import Head from "next/head";
+// STYLES
+import styles from "../styles/Home.module.css";
 
 // COMPONENTS
 import Layout from "../components/Layout/Layout";
 import SearchInput from "../components/SearchInput/SearchInput";
-
-// STYLES
-import styles from "../styles/Home.module.css";
+import CountriesTable from "../components/CountriesTable/CountriesTable";
 
 export default function Home({ countries }) {
 	// console.log("countries:", countries);
@@ -13,6 +12,7 @@ export default function Home({ countries }) {
 		<Layout>
 			<div className={styles.counts}>Found {countries.length} countries</div>
 			<SearchInput placeholder="Filter by Name, Region or SubRegion" />
+			<CountriesTable countries={countries} />
 		</Layout>
 	);
 }
