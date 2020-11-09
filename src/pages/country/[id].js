@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from 'next/link'
 
 // COMPONENTS
 import Layout from "../../components/Layout/Layout";
@@ -26,7 +27,7 @@ const Country = ({ country }) => {
 
 	useEffect(() => {
 		getBorders();
-	}, []);
+	}, [country]);
 
 	return (
 		<Layout title={country.name}>
@@ -45,7 +46,7 @@ const Country = ({ country }) => {
 								<div className={styles.overview_label}>Population</div>
 							</div>
 							<div className={styles.overview_area}>
-								<div className={styles.overview_value}>{country.area}</div>
+								<div className={styles.overview_value}>{country.area || "0"}</div>
 								<div className={styles.overview_label}>Area</div>
 							</div>
 						</div>
@@ -87,7 +88,7 @@ const Country = ({ country }) => {
 						</div>
 						<div className={styles.details_panel_row}>
 							<div className={styles.details_panel_label}>Gini</div>
-							<div className={styles.details_panel_value}>{country.gini} %</div>
+							<div className={styles.details_panel_value}>{country.gini || "0"} %</div>
 						</div>
 
 						<div className={styles.details_panel_borders}>
@@ -95,16 +96,21 @@ const Country = ({ country }) => {
 								Neighbouring Countries
 							</div>
 							<div className={styles.details_panel_borders_container}>
-								{borders.map(({ flag, name }) => (
+								{borders.map(({ flag, name, alpha3Code }) => (
 									<div
 										className={styles.details_panel_borders_country}
 										key={name}
 									>
-										<img src={flag} alt={name} />
+										<Link href={`/country/${alpha3Code}`}>
+										<a>
+										<img src={flag} alt={name} width="145px" height="90px"/>
 										<div className={styles.details_panel_borders_name}>
 											{name}
 										</div>
-									</div>
+
+										</a>
+										</Link>
+									</div>									
 								))}
 							</div>
 						</div>
