@@ -17,7 +17,9 @@ const Layout = ({ children, title = "World Ranklist" }) => {
 
 			<header className={styles.header}>
 				<Link href="/">
-					<Logo />
+					<a>
+						<Logo />
+					</a>
 				</Link>
 			</header>
 
