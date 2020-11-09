@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import Link from 'next/link'
+import Head from "next/head";
 
 // COMPONENTS
 import Layout from "../../components/Layout/Layout";
@@ -31,6 +33,10 @@ const Country = ({ country }) => {
 
 	return (
 		<Layout title={country.name}>
+			<Head>
+	<title>{country.name} | {country.subregion}</title>
+				<link rel="icon" href={country.flag} />
+			</Head>
 			<div className={styles.container}>
 				<div className={styles.container_left}>
 					<div className={styles.overview_panel}>
