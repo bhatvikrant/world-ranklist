@@ -76,7 +76,7 @@ const CountriesTable = ({ countries }) => {
 			</div>
 
 			{orderedCountries.map(country => (
-				<div className={styles.row}>
+				<div className={styles.row} key={country.name}>
 					<div className={styles.name}>{country.name}</div>
 					<div className={styles.population}>{country.population}</div>
 				</div>
